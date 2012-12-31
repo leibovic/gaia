@@ -19,15 +19,20 @@ var SystemBanner = {
 
     banner.addEventListener('animationend', function animationend() {
       banner.removeEventListener('animationend', animationend);
-      banner.classList.remove('visible');
-
-      if (buttonParams) {
-        banner.dataset.button = false;
-        button.removeEventListener('click', buttonParams.callback);
-        button.classList.remove('visible');
-      }
-    });
+      this.hide();
+    }.bind(this));
 
     banner.classList.add('visible');
+  },
+
+  hide: function sb_hide() {
+    var banner = this.banner;
+    banner.classList.remove('visible');
+
+    if (buttonParams) {
+      banner.dataset.button = false;
+      button.removeEventListener('click', buttonParams.callback);
+      button.classList.remove('visible');
+    }
   }
 };

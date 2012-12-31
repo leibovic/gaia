@@ -86,6 +86,8 @@ var CrashReporter = (function() {
         label: _('crash-banner-report'),
         callback: function reportCrash() {
           submitCrash(crashID);
+          // Hide the banner immeidately after the button is pressed.
+          SystemBanner.hide();
         }
       };
     }
