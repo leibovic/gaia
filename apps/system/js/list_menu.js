@@ -119,9 +119,14 @@ var ListMenu = {
     this.element.classList.add('visible');
   },
 
-  hide: function lm_hide() {
+  hide: function lm_hide(instant) {
     if (!this.visible)
       return;
+
+    if (instant) {
+      this.element.classList.remove('visible');
+      return;
+    }
 
     var self = this;
     this.container.addEventListener('transitionend',
@@ -163,7 +168,7 @@ var ListMenu = {
 
       case 'home':
         if (this.visible) {
-          this.hide();
+          this.hide(true);
           this.oncancel();
         }
         break;
